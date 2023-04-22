@@ -3,19 +3,22 @@
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import { validationSchema } from "@/utils/registerValidation";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { userRegister } from "@/services/api/user";
 
 export default function RegisterForm() {
     const router = useRouter();
-    const searchParams = useSearchParams();
     const [initialValues, setInitialValues] = useState({
         fullName: "",
         email: "",
         password: "",
     });
 
-    const onSubmit = (values) => {
+    const onSubmit = async (values) => {
         try {
+            const { action_register } = await userRegister(values);
+            alert("You have successfully registered!");
+            router.push("/login");
         } catch (error) {
             console.log(error);
         }

@@ -3,8 +3,9 @@
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import { validationSchema } from "@/utils/loginValidation";
-import { getCookie } from "cookies-next";
+import { getCookie, setCookie, deleteCookie } from "cookies-next";
 import { useRouter, useSearchParams } from "next/navigation";
+import { userLogin } from "@/services/api/user";
 
 export default function LoginForm() {
     const router = useRouter();
@@ -15,8 +16,19 @@ export default function LoginForm() {
         remember: getCookie("password") ? ["remember"] : [],
     });
 
-    const onSubmit = (values) => {
+    const onSubmit = async (values) => {
         try {
+            const { action_login } = await userLogin(values);
+            const nextUrl = searchParams.get("next");
+            router.push(nextUrl ? nextUrl : "/");
+            setCookie("token", action_login.token);
+            if (values.remember.includes("remember")) {
+                setCookie("email", values.email);
+                setCookie("password", values.password);
+            } else {
+                deleteCookie("email");
+                deleteCookie("password");
+            }
         } catch (error) {
             console.log(error);
         }
