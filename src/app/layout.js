@@ -1,5 +1,7 @@
+import { StoreProvider } from "@/store/store-provider";
 import "./globals.css";
 import { Manrope } from "next/font/google";
+import { Header } from "@/components";
 
 export const metadata = {
 	language: "EN",
@@ -23,7 +25,12 @@ const BodyFont = Manrope({
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
-			<body className={BodyFont.className}>{children}</body>
+			<body className={BodyFont.className}>
+				<StoreProvider>
+					<Header />
+					{children}
+				</StoreProvider>
+			</body>
 		</html>
 	);
 }
