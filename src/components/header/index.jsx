@@ -1,10 +1,28 @@
+"use client";
+
 import { bookStoreInfo } from "@/constants";
 import Image from "next/image";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useRef } from "react";
 
 export default function Header() {
+    const searchInputRef = useRef(null);
+    const router = useRouter();
+
+    const handleSearch = (event) => {
+        const searchValue = searchInputRef.current.value;
+        console.log(searchValue);
+        searchInputRef.current.value = "";
+    };
+
+    const handleKeyDown = (event) => {
+        if (event.code === "Enter") {
+            handleSearch();
+        }
+    };
+
     return (
-        <div className="w-full h-[120px] flex justify-between items-center shadow-[0_8px_10px_rgba(9,9,55,0.02)] px-[60px]">
+        <div className="w-full h-[120px] flex justify-between items-center shadow-[0_8px_10px_rgba(9,9,55,0.02)] md:px-[60px] gap-2">
             <div>
                 <Image
                     src="/images/logo.png"
@@ -12,6 +30,8 @@ export default function Header() {
                     width={60}
                     height={39}
                     title={bookStoreInfo.name}
+                    onClick={() => router.push("/")}
+                    className="cursor-pointer min-w-[60px] min-h-[39px]"
                 />
             </div>
             <div className="w-[800px] h-[50px] bg-custom-3 relative">
@@ -25,8 +45,10 @@ export default function Header() {
                 <input
                     type="text"
                     name="search"
+                    ref={searchInputRef}
                     placeholder="Search"
                     className="w-full h-full bg-transparent ps-[50px] text-xl focus-visible:outline-custom-1"
+                    onKeyDown={handleKeyDown}
                 />
             </div>
             <div className="flex gap-4">
@@ -45,7 +67,7 @@ export default function Header() {
                         alt="heart icon"
                         width={24}
                         height={24}
-                        title="like"
+                        title="liked"
                     />
                 </div>
                 <div className="w-[50px] h-[50px] bg-custom-3 flex items-center justify-center rounded hover:cursor-pointer">
