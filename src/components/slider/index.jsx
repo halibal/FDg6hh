@@ -37,12 +37,12 @@ export default function Slider() {
     }, []);
 
     return (
-        <div className="max-w-[1320px] h-[400px] w-full m-auto border-[1px] rounded-lg">
+        <div className="w-full m-auto rounded-lg">
             <div
                 style={{
                     backgroundImage: `url(${slides[currentIndex].url})`,
                 }}
-                className="w-full h-full rounded-lg bg-center bg-cover duration-500 relative"
+                className="w-full h-[400px] border-[1px] rounded-lg bg-center bg-cover duration-500 relative"
             >
                 <div className="absolute inset-0 bg-gradient-to-l from-custom-5 to-custom-6 px-[60px] py-[86px] rounded-lg">
                     <h1 className="max-w-[426px] leading-[76px] text-[56px] font-semibold text-[#FFFFFF]">

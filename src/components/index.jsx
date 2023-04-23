@@ -1,4 +1,5 @@
 export { default as Auth } from "./login-form";
+export { default as BookCard } from "./book-card";
 export { default as Category } from "./category";
 export { default as Header } from "./header";
 export { default as LoginForm } from "./login-form";
