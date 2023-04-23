@@ -33,7 +33,6 @@ export default async function CategoryPage() {
                 </h1>
             </div>
             <div className="flex flex-wrap gap-[40px]">
-                {/* map over related category array */}
                 {books.map((book) => (
                     <CategoryCard key={book.id} {...book} />
                 ))}
