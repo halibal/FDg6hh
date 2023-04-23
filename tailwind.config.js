@@ -7,6 +7,14 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			colors: {
+				'custom-1': '#6251dd',
+				'custom-2': '#ef6b4a',
+				'custom-3': '#f4f4ff',
+				'custom-4': '#090937',
+				'custom-5': 'rgba(29, 29, 78, 0.2)',
+				'custom-6': 'rgba(9, 9, 55, 0.7)',
+			},
 			backgroundColor: {
 				'custom-1': '#6251dd',
 				'custom-2': '#ef6b4a',
