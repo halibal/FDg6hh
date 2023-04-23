@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Header() {
     return (
-        <div className="w-full h-[120px] flex justify-around items-center drop-shadow-[0px_8px_10px_0px_rgba(9, 9, 55, 0.02)]">
+        <div className="w-full h-[120px] flex justify-between items-center shadow-[0_8px_10px_rgba(9,9,55,0.02)] px-[60px]">
             <div>
                 <Image
                     src="/images/logo.png"
