@@ -1,4 +1,3 @@
-import { StoreProvider } from "@/store/store-provider";
 import "./globals.css";
 import { Manrope } from "next/font/google";
 import { Header } from "@/components";
@@ -22,14 +21,12 @@ const BodyFont = Manrope({
 	subsets: ["latin"],
 });
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body className={BodyFont.className}>
-				<StoreProvider>
-					<Header />
-					{children}
-				</StoreProvider>
+				<Header />
+				{children}
 			</body>
 		</html>
 	);
